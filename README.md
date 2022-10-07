@@ -13,36 +13,21 @@ In order to get this data we had to merge two tables which where the employees a
 2. The list of retiring employees without duplicates
 
 This table includes employee number, first name, last name, title, from-date and to-date and the query returns 90,398 rows which shows the list of employees who will retire soon and this table only shows the listed person once.
-The table displays a list of employees who are going to retire in the next few years.
 
-To only keep unique values we used the same data
-Query contains the same data as the query above with addition of distinct_on command that kept only unique values. To ensure that most recent values are kept, I used command ORDER BY rt.emp_no, rt.to_date DESC to sort the data by descending order on the to_date column. In this case the most recent title was listed first, and after running the query the duplicates listed after the first appearance of the same employees were removed.
+To only keep unique values we used the same data, we typed the query above with distinct_on command so it will keep only unique values. In order to make sure recent values are shown, it was order by command by rt.emp_no, rt.to_date DESC to sort the data in descending order. 
 
 3. The number of retiring employees grouped by title
 
-The table includes employees’ titles and their sum.
+This table includes employees’ titles and their sum which the query returned a table with 7 rows and from this table we can see how many employees from each title that will be leaving
 The query returns a cohesive table with 7 rows.
-From this table we can quickly see how many employees with certain title will retire in the next few years.
 
-
-Figure 4: Table with the employee grouped by title
-
-Overview of the code
-
-In order to retrieve this table I used GROUP BY ut.title command, and it is responsible for grouping the rows by titles. Next, I used its corresponding command COUNT (ut.title) that counts how many times specific title appears in the database.
+To retrieve this table the GROUP BY ut.title command was used to organize the groupings by titles. The command COUNT was used to count the specific titles in the database.
 
 4. The employees eligible for the mentorship program
 
-The table contains employee number, first name, last name, birth date, from date, to date and title.
-The query returns 1,549 rows.
-The table displays a list of employees who is eligible for the mentorship program.
+This table contains employee number, first name, last name, birth date, from date, to date and title and this query returned 1,549 rows and the tables purpose is to show a list of employees who is eligible for the mentorship program.
 
-
-Figure 5: Table with the employee grouped by title
-
-Overview of the code
-
-To retrieve this data, three tables were merge together: employees, titles and dep_emp with the inner join. The query filters by birth date (that indicates who is eligible for the mentorship program) with the command WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31') and to_date to include only current employees. Duplicates were removed by DISTINCT ON (e.emp_no) command. To ensure I got the most recent titles, I used ORDER BY e.emp_no, ti.from_date DESC command.
+To retrieve this data, three tables were merge together: employees, titles and dep_emp with the inner join. The query filters by birth date (that indicates who is eligible for the mentorship program) with the command WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31') and to_date to include only current employees. Duplicates were removed by DISTINCT ON (e.emp_no) command. To ensure the most recent titles, the command used ORDER BY e.emp_no, ti.from_date DESC command.
 
 
 

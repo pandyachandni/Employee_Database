@@ -1,4 +1,4 @@
--- Challenge Part 1  Number of Titles Retiring
+
 SELECT salaries.salary,
 	   salaries.from_date,
        titles.emp_no,
@@ -14,9 +14,6 @@ Right JOIN salaries
  ON (titles.emp_no = retirement_info.emp_no);
  
  
- 
- --Challenge Part 2 Only the Most Recent Titles
- 
  SELECT
   challenge_part1.title,
   count(*)
@@ -27,7 +24,6 @@ GROUP BY
 HAVING count(*) > 1
    ORDER BY count DESC;
 
----Who’s Ready for a Mentor?
 SELECT 
 current_emp.emp_no,
 current_emp.first_name,
@@ -58,5 +54,5 @@ to_date,
 birth_date
 into Mentor_Challenge
 FROM mentor1
-WHERE birth_date BETWEEN '1955-01-01' AND '1955-12-31'
+WHERE birth_date BETWEEN '1952-01-01' AND '1955-12-31'
 ;
